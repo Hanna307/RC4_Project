@@ -8,7 +8,6 @@ static void rc4_swap(unsigned char *a, unsigned char *b) {
     *a = *b;
     *b = tmp;
 }
-// KSA: khởi tạo bảng S dựa trên key
 void rc4_init(RC4_CTX *ctx, const unsigned char *key, size_t keylen) {
     size_t i;
     int j = 0;
@@ -22,8 +21,6 @@ void rc4_init(RC4_CTX *ctx, const unsigned char *key, size_t keylen) {
         rc4_swap(&ctx->S[i], &ctx->S[j]);
     }
 }
-
-// PRGA + XOR input với keystream
 void rc4_process(RC4_CTX *ctx,
                  const unsigned char *input,
                  unsigned char *output,
